@@ -1,3 +1,20 @@
+import streamlit as st
+
+PASSWORD = "2606"
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    pw = st.text_input("パスワードを入力してください", type="password")
+    if pw == PASSWORD:
+        st.session_state.authenticated = True
+        st.success("ログイン成功！")
+    else:
+        st.stop()
+
+
+
 import requests
 from bs4 import BeautifulSoup
 import streamlit as st
